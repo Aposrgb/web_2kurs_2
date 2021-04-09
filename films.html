@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="films.css">
+    <title>WEB</title>
+</head>
+<body onload="ListFilm()">
+    <header>
+        <marquee id="name_site" behavior="alternate" direction="right">
+            Фильмы
+        </marquee>
+    </header>
+    <div class="margin"><p style='text-align: center;' class="tags">Нету нужного фильма? Его можно добавить на этой <a id='link_to_p2' href='films1.html'>странице</a></p></div>
+    <main>
+        <button onclick="filters()" id="filter">Фильтрация</button>
+        <div style="width: max-content;margin: auto;text-align: center;">
+            <div class='fil_tag'>По жанру</div>
+            <div class='fil_tag'>По дате выхода</div>
+            <div class='fil_tag'>По стране</div>
+        </div>
+        <button id="undo" onclick="Undo()" style="display: none;margin-bottom: 0;">Отменить</button>
+        <div id="spawn_img"></div>
+      
+    </main>
+    <script src="FilmClass.js"></script>
+</body>

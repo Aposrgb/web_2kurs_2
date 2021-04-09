@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="films.css">
+    <title>WEB</title>
+</head>
+<body>
+    <header>
+        <marquee id="name_site" behavior="alternate" direction="right">
+            Фильмы
+        </marquee>
+    </header>
+    <div class="margin" style="text-align: center;"> <a class="tags" id='link_to_p2' href='films.html'>Здесь можно вернутся.</a></div>
+    <main>
+        <div id='AddFilm'>
+            <h1 style="color:white;text-align: center;margin-top: 20vh;">Добавить фильм</h1>
+            <div class='textbox'>
+                Название кино
+                <input type="text" id="name">
+            </div>
+            <div class='textbox'>
+                Ссылка на изображение(постер)
+                <input type="text" id="url">
+            </div>
+            <div class='textbox'>
+                Страна
+                <input type="text" id="country">
+            </div>
+            <div class='textbox'>
+                Жанр
+                <input type="text" id="janr">
+            </div>
+            <div class='textbox'>
+                Режиссёр(ы)(через запятую)
+                <input type="text" id="rejisser">
+            </div>
+            <div class='textbox'>
+                Сценарий
+                <textarea type="text" id="scenariy"  maxlength="1000"></textarea>
+            </div>
+            <div class='textbox'>
+                Продюсер
+                <input type="text" id="producer">
+            </div>
+            <div class='textbox'>
+                Оператор
+                <input type="text" id="operator">
+            </div>
+            <div class='textbox'>
+                Композитор
+                <input type="text" id="compositor">
+            </div>
+            <div class='textbox'>
+                Бюджет
+                <input type="text" id="budjet">
+            </div>
+            <div class='textbox'>
+                Мировые сборы
+                <input type="text" id="mirov_sbori">
+            </div>
+            <div class='textbox'>
+                Возрастной рейтинг
+                <input value="" min="0" max ="18" type="number" id="rate">
+            </div>
+            <div class='textbox'>
+                Длина фильма
+                <div id='time_lenght' style="display: flex;width: 19vh;">
+                    <input min="0" max="10" value="00" style="min-width: 5vh;" type="number" id="time_hour">
+                    <input min="0" max="59" value="00" style="min-width: 5vh;" type="number" id="time_min">
+                    <input min="0" max="59" value="00" style="min-width: 5vh;" type="number" id="time_sec">
+                </div>
+            </div>
+            <div class='textbox'>
+                Дата выхода
+                <input type="date" id="date">
+            </div>
+            <div id="result"></div>
+            <button onclick="AddFilm()" >Добавить!</button>
+        </div>
+        
+    </main>
+    <script src="FilmClass1.js"></script>
+</body>

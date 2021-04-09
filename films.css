@@ -1,0 +1,210 @@
+body{
+    margin: 0;
+    background-color:#171717;
+}
+*{
+    word-break: break-all;
+}
+a{
+    text-decoration: none;
+    color: #f1ff17;
+}
+#link_to_p2{
+    color: #f1ff17;
+    text-shadow: 0px 20px 7px #c2cb3d8f;
+}
+header{
+    height: 6vh;
+    background-color: black;
+    border-radius: 0.2vh;
+
+}
+p{
+    margin: 0;
+}
+#name_site{
+    padding: 1vh; 
+    color: red;
+    font-size: 3vh;
+    font-family: fantasy;
+    text-shadow: 0px 3px 5px #848484c9;
+}
+.margin{
+    height: 10vh;
+}
+main{
+    background-color:#28282829;
+    min-height: 75vh;
+    border-radius:2vh;
+    margin: 3vh;
+    box-shadow: 0vh 0vh 2vh 0vh;
+}
+#result{
+    color: white;
+    text-align: center;
+    margin-top: 2vh;
+}
+#spawn_img{
+    display: flex;flex-flow: wrap;
+}
+#Films{
+    background-size: 25vh 35vh; width: 25vh; height: 35vh;
+    margin: 6.5vh;
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+    border-radius: 2vh;
+    box-shadow: 0.1vh 0.1vh 2vh 0.3vh black;
+}
+#Films:hover{
+    width: 26vh; height: 36vh;
+    background-size: 26vh 36vh;
+    box-shadow: 0.1vh 0.1vh 2vh 0.3vh #ffffff8a;
+}
+#Films:hover #Krest{
+    display: block;
+}
+#Krest{
+    background-size: 3vh 3vh;
+    min-height: 3vh;
+    min-width: 3vh;
+    background-color: #ffffffa1;
+    box-shadow: 0px 0px 2vh 0.4vh;
+    border-radius: 15vh;
+    display: none;
+}
+#Films p{
+    color: #e4ff00;
+    min-height: 3vh;
+    margin: auto;
+    margin-bottom: 0;
+    background-color: #000000a1;
+    border-radius: 6px
+}
+#Films button{
+    display: none;
+    margin: 0;
+}
+#Films:hover button{
+    display: block;
+}
+main button{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    background-color: #102b484d;
+    color: white;
+    border-radius: 1vh;
+    min-width: 10vh;
+    font-size: 2.3vh;
+    min-height: 3vh;
+    text-align: center;
+    margin-bottom: 15vh;
+}
+main button:focus{
+    box-shadow: 0px 0px 1.2vh 0.1vh #5985ffa6;
+    outline: none;
+}
+main input:focus{
+    outline: none;
+    box-shadow: 0px 0px 1.2vh 0.1vh #5985ffa6;
+}
+main button:hover{
+    box-shadow: 0px 0px 1.2vh 0.1vh#c7c7c733;
+}
+.textbox{
+    display: flex;
+    color:white;
+    flex-direction: column;
+    align-items: center;
+    margin: 1vh;
+}
+.textbox input{
+    min-width: 18vh;
+}
+.tags{
+    color: rgb(177, 214, 255);
+    margin-top: 5vh;
+    font-size: 3.5vh;
+}
+.text{
+    font-size:1.9vh;
+    margin-top:3vh;
+    color: #b0d5b0;
+    display: flex;
+    flex-direction: column;
+    text-shadow: 0vh 0vh 2vh #757575;
+}
+#scenariy{
+    min-width: 7vw;
+    min-height: 10vh;
+    max-width: 11.5vw;
+    max-height: 20.5vh;
+}
+#filter{
+    color: #b6deff;
+    font-size: 5vh;
+    margin-bottom: 0;
+}
+.fil_tag{
+    display: none;
+    font-size: 3vh;
+    color: #8cdaff;
+}
+.fil_tag input{
+    border-radius: 2vh;
+}
+#janres{
+    font-size: 1.7vh;
+    color:white;
+}
+#dates{
+    font-size: 1.7vh;
+    color:white;
+}
+#countries{
+    font-size: 1.7vh;
+    color:white;
+}
+.not_found{
+    font-size: 1.7vh;
+    color:white;
+}
+#otziv{
+    min-height: 20vh;
+    min-width: 40vw;
+    max-width: 60vw;
+    max-height: 35vh
+}
+#name_otz{
+    font-size: 2vh;
+    height: 4vh;
+    width: 20vw;
+}
+#otziv{
+    font-size: 2vh;
+}
+.zvezda{
+    background: url("zvezda.png") ;
+    background-size: 100px 70px;
+    height: 70px;
+    width: 100px
+}
+.krest_otz{
+    background:url('https://image.flaticon.com/icons/png/512/17/17047.png');
+    background-size: 3vh 3vh;
+    height: 3vh;
+    width: 3vh;
+    background-color: #ffffffa1;
+    box-shadow: 0px 0px 3vh 0.1vh;
+    border-radius: 15vh;
+    display: none;
+}
+.otzivs:hover .krest_otz{
+    display: flex;
+    float: right;
+}
+#place_otz{
+    max-width: 50vw;
+}
