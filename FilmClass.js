@@ -84,11 +84,11 @@ function InFilms(i){
         setOtziv(i);
     }
 }
-function Otz_remove(i){
+function Otz_remove(i,k){
     document.getElementsByClassName('otzivs')[i].remove();
     z=[];
     for(let j=0;j<Film.List[i].otziv.length;j++){
-        if(i==j){
+        if(k==j){
             continue;
         }
         let s = new Otziv();
@@ -111,7 +111,7 @@ function setOtziv(i){
     let str =document.createElement('div');
     let z=Film.List[i].otziv;
     for(let j=0;j<Film.List[i].otziv.length;j++){
-        str.innerHTML+="<div style='margin:4vh;box-shadow: 0px 0px 2vh 0vh black;border-radius: 5vh;background: black;' class='otzivs'><div class='tags' style='margin: 4vh;'><div class='krest_otz' onclick='Otz_remove("+i+")'></div>Имя<div><div><div class='text' style='flex-direction: row;'>"+z[j].name+"</div><div class='tags'>Оценка фильма</div> "+raiting(z[j].raiting)+"<div class='tags'>Отзыв<div><p style='padding-bottom:5vh;' class='text'>"+z[j].otziv+"</div>";
+        str.innerHTML+="<div style='margin:4vh;box-shadow: 0px 0px 2vh 0vh black;border-radius: 5vh;background: black;' class='otzivs'><div class='tags' style='margin: 4vh;'><div class='krest_otz' onclick='Otz_remove("+i+","+j+")'></div>Имя<div><div><div class='text' style='flex-direction: row;'>"+z[j].name+"</div><div class='tags'>Оценка фильма</div> "+raiting(z[j].raiting)+"<div class='tags'>Отзыв<div><p style='padding-bottom:5vh;' class='text'>"+z[j].otziv+"</div>";
     }
     document.getElementById('place_otz').appendChild(str);
 }
