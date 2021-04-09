@@ -11,6 +11,9 @@ window.onkeydown=function(e){
 }
 function AddFilm(){
     Film.List=JSON.parse(localStorage.getItem("List"));
+    if(Film.List==null){
+        Film.List=[];
+    }
     if(Captcha("name") || Captcha("url") || Captcha("country") || Captcha('janr') || Captcha("rejisser") || Captcha("scenariy") || Captcha("producer") || Captcha("operator") || Captcha("compositor") || Captcha("budjet") || Captcha("mirov_sbori") || Captcha("rate") || length() || Captcha("date")){
         document.getElementById('result').innerText="Неверные данные";
         return;
