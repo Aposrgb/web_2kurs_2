@@ -85,7 +85,7 @@ function InFilms(i){
     }
 }
 function Otz_remove(i,k){
-    document.getElementsByClassName('otzivs')[i].remove();
+    document.getElementsByClassName('otzivs')[k].remove();
     z=[];
     for(let j=0;j<Film.List[i].otziv.length;j++){
         if(k==j){
