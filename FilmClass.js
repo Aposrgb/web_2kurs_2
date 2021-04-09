@@ -106,6 +106,9 @@ function Otz_remove(i,k){
         Film.List[i].otziv.push(s);
     }
     localStorage.setItem("List",JSON.stringify(Film.List));
+    setOtziv(i);
+    InFilms(i);
+    InFilms(i);
 }
 function setOtziv(i){
     let str =document.createElement('div');
