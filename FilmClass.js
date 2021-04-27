@@ -1,5 +1,20 @@
-
+let url_api="https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1";
+let token  = "8c8e1a50-6322-4135-8875-5d40a5420d86";
 let krest=0;
+getMovies();
+async function getMovies(){
+    let res = await fetch(url_api,{
+        headers:{
+            "Content-Type":"application/json",
+            "X-API-KEY": token,
+        },
+    });
+    let respData = await res.json();
+    showMovies(respData);
+}
+function showMovies(data) {
+    console.log(data);
+  }
 class Otziv{
     name;otziv;raiting;
 }
