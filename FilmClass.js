@@ -1,7 +1,17 @@
+
 let url_api="https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1";
 let token  = "8c8e1a50-6322-4135-8875-5d40a5420d86";
+let data;
 let krest=0;
-getMovies();
+function Load(){
+    Film.List = JSON.parse(localStorage.getItem("List"));
+    if(Film.List==null || Film.List.length==0){
+        getMovies();
+    }
+    else{
+        ListFilm();
+    }
+}
 async function getMovies(){
     let res = await fetch(url_api,{
         headers:{
@@ -9,12 +19,9 @@ async function getMovies(){
             "X-API-KEY": token,
         },
     });
-    let respData = await res.json();
-    showMovies(respData);
+    data =await res.json();
+    setTimeout(ListFilm,10);
 }
-function showMovies(data) {
-    console.log(data);
-  }
 class Otziv{
     name;otziv;raiting;
 }
@@ -22,12 +29,18 @@ class Film{
     static List=[];
     otziv=[];
     name; url; country; janr; rejisser; scenariy; producer; 
-    operator; compositor; budjet; mirov_sbori; rate; time_length; date;
+    operator; compositor; budjet; mirov_sbori; rate; time_length; date;raiting_kp;
     SetFilm(i){
         let new_div = document.createElement("div");
         new_div.setAttribute('id', i);
         new_div.setAttribute('width', "38vh");
-        new_div.innerHTML='<div onclick="InFilms('+i+')" id="Films" class="Films" style ="background-image: url('+this.url+');"><p>'+this.name+' '+this.rate+" "+this.janr+'<br>'+this.time_length+'<p></div>';
+        if(this.rate=="Нет информации"){
+            new_div.innerHTML='<div onclick="InFilms('+i+')" id="Films" class="Films" style ="background-image: url('+this.url+');"><p>'+this.name+" "+this.janr+'<br>'+this.time_length+'<p></div>';
+        }
+        else{
+            new_div.innerHTML='<div onclick="InFilms('+i+')" id="Films" class="Films" style ="background-image: url('+this.url+');"><p>'+this.name+' '+this.rate+" "+this.janr+'<br>'+this.time_length+'<p></div>';
+        }
+        
         document.getElementById("spawn_img").appendChild(new_div);
         let z=document.createElement("div");
         let s = 'https://image.flaticon.com/icons/png/512/17/17047.png';
@@ -86,9 +99,16 @@ function InFilms(i){
     if(s==-1){
         let new_div = document.createElement("div");
         new_div.setAttribute('id', "0"+i);
-        new_div.innerHTML="<h1 style='font-size:6vh;'>О фильме "+Film.List[i].name+" "+Film.List[i].rate+"<p class='tags'> Сценарий <p><p class='text'>"+Film.List[i].scenariy+"</p><p class='tags'>Жанр</p> <p class='text'>"+Film.List[i].janr+"</p>";
+        if(Film.List[i].rate=="Нет информации"){
+            new_div.innerHTML="<h1 style='font-size:6vh;'>О фильме "+Film.List[i].name;
+        }
+        else{
+            new_div.innerHTML="<h1 style='font-size:6vh;'>О фильме "+Film.List[i].name+" "+Film.List[i].rate;
+        }
+        new_div.innerHTML+="<p class='tags'> Сценарий <p><p class='text'>"+Film.List[i].scenariy+"</p><p class='tags'>Жанр</p> <p class='text'>"+Film.List[i].janr+"</p>";
         new_div.innerHTML+="<p class='tags'>Общие сведения</p><p class='text'>Продолжительность: "+Film.List[i].time_length+"</p><p class='text'>Продюсер: "+Film.List[i].producer+"</p><p class='text'>Возрастной рейтинг: "+Film.List[i].rate+"</p>";
         new_div.innerHTML+="<p class='text'>Режиссёр: "+Film.List[i].rejisser+"</p><p class='text'>Оператор: "+Film.List[i].operator+"</p><p class='text'>Мировые сборы: "+Film.List[i].mirov_sbori+"</p><p class='text'>Бюджет: "+Film.List[i].budjet+"</p>";
+        new_div.innerHTML+="<p class='text'>Рейтинг Кинопоиска:"+Film.List[i].raiting_kp+"</p>";
         new_div.innerHTML+="<p class='text'>Композитор: "+Film.List[i].compositor+"</p><p class='text'>Страна: "+Film.List[i].country+"</p><p class='text'>Дата выхода: "+Film.List[i].date+"</p>";
         new_div.innerHTML+="<div class='tags'> Написать отзыв! <div class='text'>Имя <input id='name_otz' placeholder='Имя'> </div><div class='text'>Отзыв<textarea id='otziv' placeholder='Макс. 1000 символов' maxlength='1000'></textarea></div><div style='display:flex;margin:6vh;'> <div class='zvezda' onclick='zvezda(0)'> </div> <div class='zvezda' onclick='zvezda(1)'> </div><div class='zvezda' onclick='zvezda(2)'> </div> <div class='zvezda' onclick='zvezda(3)'> </div> <div class='zvezda' onclick='zvezda(4)'> </div> </div><div id='logs'></div><input value='' id='raiting' style='display:none;'><button onclick='addotziv("+i+")'>Добавить отзыв!</button>";
         new_div.innerHTML+="</div><div id='place_otz'></div></h1>";
@@ -121,9 +141,6 @@ function Otz_remove(i,k){
         Film.List[i].otziv.push(s);
     }
     localStorage.setItem("List",JSON.stringify(Film.List));
-    setOtziv(i);
-    InFilms(i);
-    InFilms(i);
 }
 function setOtziv(i){
     let str =document.createElement('div');
@@ -141,36 +158,27 @@ function raiting(raiting){
     }
     return str+'</div>';
 }
-
 function ListFilm(){
-    Film.List = JSON.parse(localStorage.getItem("List"));
-    if(Film.List==null){
+    if(Film.List==null || Film.List.length==0){
         Film.List=[];
+        for(let i=0;i<data.films.length;i++){
+            let s = new Film();
+            s=Pr(s,"",i);
+            Film.List.push(s);
+            s.SetFilm(i);
+        }
+        localStorage.setItem("List",JSON.stringify(Film.List));
+        Film_spawn(false);
+        return; 
     }
-    
-    let [i,j,k]=Film.List;// первые 3 элемента массива
-    console.log(i,j,k);
-
-    function summ(i,j,k,l){
-        let tmp;
-        tmp=i+j+k+l;
-        return tmp;
-    }
-    let arr=[1,66,0,3];
-    console.log(summ(...arr));//spread оператор
-
-    let func= (a,b) => a*b;
-    console.log(func(2,10));//стрелочные функции
-
-    Film_spawn();
+    Film_spawn(true);
 }
-function Film_spawn(){
-    if(Film.List.length==0){
-        return;
-    }
-    for(let i=0;i<Film.List.length;i++){
-        let s = new Film();
-        Pr(s,"list",i).SetFilm(i);
+function Film_spawn(b){
+    if(b){
+        for(let i=0;i<Film.List.length;i++){
+            let s = new Film();
+            Pr(s,"list",i).SetFilm(i);
+        }
     }
     if(Film.List.length>0){
         let s = document.createElement("div");
@@ -261,25 +269,35 @@ function zvezda(j){
         s.operator=Film.List[i].operator;
         s.producer=Film.List[i].producer;
         s.rate=Film.List[i].rate;
+        s.raiting_kp="Нет информации";
         s.rejisser=Film.List[i].rejisser;
         s.scenariy=Film.List[i].scenariy;
         s.otziv=Film.List[i].otziv;
     }
-    else if(str=="doc"){
-        s.name=document.getElementById('name').value;
-        s.url=document.getElementById('url').value;
-        s.time_length=document.getElementById("time_hour").value+"ч:"+document.getElementById("time_min").value+"м:"+document.getElementById("time_sec").value+"с";
-        s.budjet=document.getElementById("budjet").value;
-        s.country=document.getElementById("country").value;
-        s.compositor=document.getElementById("compositor").value;
-        s.date=document.getElementById("date").value;
-        s.janr=document.getElementById("janr").value;
-        s.mirov_sbori=document.getElementById("mirov_sbori").value;
-        s.operator=document.getElementById("operator").value;
-        s.producer=document.getElementById("producer").value;
-        s.rate=document.getElementById("rate").value+"+";
-        s.rejisser=document.getElementById("rejisser").value;
-        s.scenariy=document.getElementById("scenariy").value;
+    else{
+        s.name=data.films[i].nameRu;
+        s.url=data.films[i].posterUrl;
+        s.time_length=data.films[i].filmLength;
+        s.budjet="Нет информации";
+        s.country="";
+        for(let j=0;j<data.films[i].countries.length;j++){
+            s.country+=data.films[i].countries[j].country+",";
+        }
+        s.country =s.country.substring(0,s.country.length-1);
+        s.compositor="Нет информации";
+        s.date=data.films[i].year;
+        s.janr="";
+        for(let j=0;j<data.films[i].genres.length;j++){
+            s.janr+=data.films[i].genres[j].genre+",";
+        }
+        s.janr=s.janr.substring(0,s.janr.length-1);
+        s.mirov_sbori="Нет информации";
+        s.operator="Нет информации";
+        s.producer="Нет информации";
+        s.rate="Нет информации";
+        s.raiting_kp=data.films[i].rating;
+        s.rejisser="Нет информации";
+        s.scenariy="Нет информации";
     }
     return s;
 }

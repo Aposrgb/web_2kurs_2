@@ -2,7 +2,7 @@ class Film{
     static List=[];
     otziv=[];
     name; url; country; janr; rejisser; scenariy; producer; 
-    operator; compositor; budjet; mirov_sbori; rate; time_length; date;
+    operator; compositor; budjet; mirov_sbori; rate; time_length; date;raiting_kp;
 }
 window.onkeydown=function(e){
     if(e.code=="Enter"){
@@ -46,6 +46,7 @@ function Pr(s=new Film(), str , i){
         s.producer=Film.List[i].producer;
         s.rate=Film.List[i].rate;
         s.rejisser=Film.List[i].rejisser;
+        s.raiting_kp="Нет информации";
         s.scenariy=Film.List[i].scenariy;
         s.otziv=Film.List[i].otziv;
     }
@@ -62,6 +63,7 @@ function Pr(s=new Film(), str , i){
         s.operator=document.getElementById("operator").value;
         s.producer=document.getElementById("producer").value;
         s.rate=document.getElementById("rate").value+"+";
+        s.raiting_kp="Нет информации";
         s.rejisser=document.getElementById("rejisser").value;
         s.scenariy=document.getElementById("scenariy").value;
     }

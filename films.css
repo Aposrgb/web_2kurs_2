@@ -1,6 +1,7 @@
 body{
     margin: 0;
-    background-color:#171717;
+    background-image:url("http://s1.oboiki.net/uploads/images/previews/2011/06/e6fef742b07f6927eca82357f5bcab11/seraya-tekstura-s-polosami-oboi_550x340.jpg");
+    background-size: 210vh;
 }
 *{
     word-break: break-all;
@@ -33,10 +34,11 @@ p{
     height: 10vh;
 }
 main{
-    background-color:#28282829;
+    background-color:#171717;
     min-height: 75vh;
     border-radius:2vh;
     margin: 3vh;
+    margin-bottom: 20vh;
     box-shadow: 0vh 0vh 2vh 0vh;
 }
 #result{
