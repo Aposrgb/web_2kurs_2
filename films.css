@@ -1,10 +1,12 @@
 body{
     margin: 0;
-    background-image:url("http://s1.oboiki.net/uploads/images/previews/2011/06/e6fef742b07f6927eca82357f5bcab11/seraya-tekstura-s-polosami-oboi_550x340.jpg");
+    background: #1a1b3b;
     background-size: 210vh;
+    
 }
 *{
     word-break: break-all;
+    transition: all 1s;
 }
 a{
     text-decoration: none;
