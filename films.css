@@ -6,7 +6,7 @@ body{
 }
 *{
     word-break: break-all;
-    transition: all 1.5s;
+    
 }
 a{
     text-decoration: none;
@@ -63,6 +63,7 @@ main{
 #Films:hover{
     background-size: 28vh 38vh;
     box-shadow: 0.1vh 0.1vh 2vh 0.3vh #ffffff8a;
+    transition: all 1.5s;
 }
 #Films:hover #Krest{
     display: block;

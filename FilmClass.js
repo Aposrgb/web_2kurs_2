@@ -7,6 +7,7 @@ function Load(){
     Film.List = JSON.parse(localStorage.getItem("List"));
     if(Film.List==null || Film.List.length==0){
         getMovies();
+		console.log(Film.List);
     }
     else{
         ListFilm();
