@@ -6,7 +6,7 @@ body{
 }
 *{
     word-break: break-all;
-    transition: all 1s;
+    transition: all 1.5s;
 }
 a{
     text-decoration: none;
@@ -52,7 +52,7 @@ main{
     display: flex;flex-flow: wrap;
 }
 #Films{
-    background-size: 25vh 35vh; width: 25vh; height: 35vh;
+    background-size: 24vh 34vh; width: 24vh; height: 34vh;
     margin: 6.5vh;
     display: flex;
     flex-direction: column-reverse;
@@ -61,8 +61,7 @@ main{
     box-shadow: 0.1vh 0.1vh 2vh 0.3vh black;
 }
 #Films:hover{
-    width: 26vh; height: 36vh;
-    background-size: 26vh 36vh;
+    background-size: 28vh 38vh;
     box-shadow: 0.1vh 0.1vh 2vh 0.3vh #ffffff8a;
 }
 #Films:hover #Krest{
